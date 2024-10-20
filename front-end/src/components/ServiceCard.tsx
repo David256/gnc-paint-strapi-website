@@ -10,14 +10,23 @@ const ServiceCard: FunctionComponent<ServiceCardProps> = (props) => {
   const { index, service } = props
   return (
     <>
-      <div className="flex flex-col gap-4 p-4 rounded-3xl">
-        <div className="flex flex-row">[icon]</div>
-        <div className="flex flex-row">
-          {index}
-          <span>.</span>
+      <div className="p-[50px] flex flex-col gap-6 rounded-[60px] bg-white w-[350px] h-[400px]">
+        <aside className="flex flex-row w-[60px] h-[60px] border">[icon]</aside>
+        <div className="flex flex-col gap-[10px]">
+          <header className="flex flex-row text-7xl leading-[72px]">
+            {index}
+            <span>.</span>
+          </header>
+
+          <div className="flex flex-col gap-5">
+            <h4 className="flex flex-row leading-6 text-2xl">
+              {service.title}
+            </h4>
+            <div className="flex flex-row leading-5 text-xl">
+              {service.paragraph}
+            </div>
+          </div>
         </div>
-        <div className="flex flex-row">{service.title}</div>
-        <div className="flex flex-row">{service.paragraph}</div>
       </div>
     </>
   )
