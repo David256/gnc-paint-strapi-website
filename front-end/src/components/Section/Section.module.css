@@ -1,0 +1,30 @@
+.Section {
+    position: relative;
+    z-index: 2;
+}
+
+/* 
+.Section:after {
+    z-index: -10;
+    content: '';
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    height: calc(100% + 50px);
+    transform: skewY(-5deg);
+    background-color: inherit;
+}
+*/
+
+.Section::after {
+    z-index: -10;
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    height: calc(100% * 1.2);
+    clip-path: polygon(0 20%, 100% 0, 100% 80%, 0 100%);
+    background-color: inherit;
+}
