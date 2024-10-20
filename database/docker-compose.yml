@@ -1,0 +1,18 @@
+services:
+
+  db:
+    image: postgres
+    shm_size: 128mb
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: painter
+      POSTGRES_PASSWORD: paint.db.password
+      POSTGRES_DB: paintdb
+
+  adminer:
+    image: adminer
+    ports:
+      - 8088:8080
