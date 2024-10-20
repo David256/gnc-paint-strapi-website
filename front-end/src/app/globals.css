@@ -22,6 +22,11 @@ body {
 }
 
 @layer base {
+  p {
+    font-size: 20px;
+    line-height: 20px;
+  }
+
   h1 {
     font-size: 80px;
     line-height: 90px;
