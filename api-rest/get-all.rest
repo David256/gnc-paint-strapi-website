@@ -1,0 +1,3 @@
+// Find all the colors with their services
+
+http://localhost:1337/api/colors?fields[0]=name
