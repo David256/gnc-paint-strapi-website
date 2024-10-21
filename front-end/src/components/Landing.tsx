@@ -7,6 +7,7 @@ import Section from './Section'
 import Badge from './Badge'
 import CTA from './CTA'
 import Header from './Header'
+import Link from 'next/link'
 
 interface LandingProps {
   services: Service[]
@@ -112,9 +113,11 @@ const Landing: FunctionComponent<LandingProps> = (props) => {
             </div>
 
             <div>
-              <CTA backgroundColor={'var(--foreground)'} color={baseColor}>
-                Ir a la ruta “/”
-              </CTA>
+              <Link href="/">
+                <CTA backgroundColor={'var(--foreground)'} color={baseColor}>
+                  Ir a la ruta “/”
+                </CTA>
+              </Link>
             </div>
           </article>
         </Section>
