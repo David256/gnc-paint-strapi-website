@@ -1,5 +1,5 @@
 import Landing from '@/components/Landing'
-import { getColorWithServices } from '../actions'
+import { getAllColorNames, getColorWithServices } from '../actions'
 import { notFound } from 'next/navigation'
 import logger from '@/lib/logger'
 
@@ -7,6 +7,18 @@ interface ColorPageProps {
   params: {
     colorName: string
   }
+}
+
+export const dynamicParams = true
+
+export const generateStaticParams = async () => {
+  const colorBriefs = await getAllColorNames()
+
+  const colorNames = colorBriefs.map((brief) => brief.name)
+
+  return colorNames.map((colorName) => ({
+    colorName,
+  }))
 }
 
 export default async function ColorPage(props: ColorPageProps) {
