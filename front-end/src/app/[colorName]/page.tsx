@@ -15,7 +15,7 @@ export default async function ColorPage(props: ColorPageProps) {
     notFound()
   }
 
-  console.log(colorData)
+  // console.debug(colorData)
 
   return <Landing baseColor={colorData.hex} services={colorData.services} />
 }
