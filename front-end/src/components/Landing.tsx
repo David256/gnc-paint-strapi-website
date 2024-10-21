@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Section from './Section'
 import Badge from './Badge'
 import CTA from './CTA'
+import Header from './Header'
 
 interface LandingProps {
   services: Service[]
@@ -23,18 +24,7 @@ const Landing: FunctionComponent<LandingProps> = (props) => {
           backgroundColor: 'var(--light-color)',
         }}
       >
-        <div
-          className="content-sheet-x py-14"
-          style={{
-            backgroundColor: 'var(--light-color)',
-          }}
-        >
-          <header className="flex flex-row">
-            <div className="bg-white rounded-full p-2 px-5 w-[172px] h-[96px] flex flex-col items-center justify-center">
-              <Image src="/logo.png" alt="" width={127} height={63} />
-            </div>
-          </header>
-        </div>
+        <Header />
 
         <Section
           className="flex md:flex-row-reverse flex-col gap-2 justify-between"
