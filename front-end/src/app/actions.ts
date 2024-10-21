@@ -49,7 +49,7 @@ export async function getColorWithServices(
   return {
     id: colorData.id,
     name: colorData.attributes.name,
-    hex: colorData.attributes.hex,
+    hex: `#${colorData.attributes.hex}`,
     services: colorData.attributes.services.data.map((service) => ({
       id: service.id,
       title: service.attributes.title,
