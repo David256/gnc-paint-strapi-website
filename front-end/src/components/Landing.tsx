@@ -2,7 +2,6 @@
 import { FunctionComponent } from 'react'
 import ServiceCard from './ServiceCard'
 import { Service } from '../types'
-import Color from 'color'
 import Image from 'next/image'
 import Section from './Section'
 import Badge from './Badge'
@@ -16,32 +15,18 @@ interface LandingProps {
 const Landing: FunctionComponent<LandingProps> = (props) => {
   const { services, baseColor } = props
 
-  const color = Color(baseColor)
-
-  const mainColor = color.hex()
-  const backgroundColor = color.lighten(1).hex()
-  const darkColor = color.grayscale().darken(0.79).hex()
-  const lightColor = color.lightness(90).rotate(-7).saturate(0.6).hex()
-
   return (
     <>
-      <style jsx global>{`
-        :root {
-          --primary-color: ${mainColor};
-          --background-color: ${backgroundColor};
-        }
-      `}</style>
-
       <div
         className="flex flex-col"
         style={{
-          backgroundColor: lightColor,
+          backgroundColor: 'var(--light-color)',
         }}
       >
         <div
           className="content-sheet-x py-14"
           style={{
-            backgroundColor: lightColor,
+            backgroundColor: 'var(--light-color)',
           }}
         >
           <header className="flex flex-row">
@@ -53,7 +38,7 @@ const Landing: FunctionComponent<LandingProps> = (props) => {
 
         <Section
           className="flex md:flex-row-reverse flex-col gap-2 justify-between"
-          backgroundColor={lightColor}
+          backgroundColor={'var(--light-color)'}
           style={{ zIndex: 10 }}
         >
           <div className="flex-1 flex flex-col items-center justify-center">
@@ -67,8 +52,8 @@ const Landing: FunctionComponent<LandingProps> = (props) => {
 
           <article className="flex flex-1 flex-col gap-[60px] px-7">
             <header className="flex flex-col gap-2">
-              <h3 style={{ color: mainColor }}>Vamos con toda!</h3>
-              <h1 style={{ color: darkColor }}>
+              <h3 style={{ color: baseColor }}>Vamos con toda!</h3>
+              <h1 style={{ color: 'var(--foreground)' }}>
                 Prueba freelance
                 <br />
                 Fullstack
@@ -77,33 +62,33 @@ const Landing: FunctionComponent<LandingProps> = (props) => {
 
             <div className="flex flex-col lg:flex-row flex-wrap [&>*]:max-w-fit lg:max-w-[376px] gap-[14px]">
               <Badge
-                color={mainColor}
-                backgroundColor={backgroundColor}
+                color={baseColor}
+                backgroundColor={'var(--background)'}
                 label="Typescript"
               />
               <Badge
-                color={mainColor}
-                backgroundColor={backgroundColor}
+                color={baseColor}
+                backgroundColor={'var(--background)'}
                 label="SQL"
               />
               <Badge
-                color={mainColor}
-                backgroundColor={backgroundColor}
+                color={baseColor}
+                backgroundColor={'var(--background)'}
                 label="Node JS"
               />
               <Badge
-                color={mainColor}
-                backgroundColor={backgroundColor}
+                color={baseColor}
+                backgroundColor={'var(--background)'}
                 label="React JS"
               />
               <Badge
-                color={mainColor}
-                backgroundColor={backgroundColor}
+                color={baseColor}
+                backgroundColor={'var(--background)'}
                 label="Next JS"
               />
               <Badge
-                color={mainColor}
-                backgroundColor={backgroundColor}
+                color={baseColor}
+                backgroundColor={'var(--background)'}
                 label="Strapi"
               />
             </div>
@@ -112,7 +97,7 @@ const Landing: FunctionComponent<LandingProps> = (props) => {
 
         <Section
           className="flex md:flex-row-reverse flex-col md:gap-2 justify-between pt-64 md:pt-24"
-          backgroundColor={mainColor}
+          backgroundColor={baseColor}
           style={{ zIndex: 9 }}
         >
           <div className="flex-1 flex flex-col items-center justify-center">
@@ -137,7 +122,7 @@ const Landing: FunctionComponent<LandingProps> = (props) => {
             </div>
 
             <div>
-              <CTA backgroundColor={darkColor} color={backgroundColor}>
+              <CTA backgroundColor={'var(--foreground)'} color={baseColor}>
                 Ir a la ruta “/”
               </CTA>
             </div>
@@ -146,14 +131,14 @@ const Landing: FunctionComponent<LandingProps> = (props) => {
 
         <Section
           className="flex flex-col lg:flex-row gap-4 justify-between md:pt-60 pb-48 pt-[30rem]"
-          backgroundColor={darkColor}
+          backgroundColor={'var(--foreground)'}
           style={{ zIndex: 8 }}
         >
           <div className="lg:flex-1 lg:max-w-[552px] mb-24 flex flex-col gap-[60px] justify-center">
             <div
               id="content"
               className="[&_p]:mb-5"
-              style={{ color: mainColor }}
+              style={{ color: baseColor }}
             >
               <p>
                 Hay que crear dos colecciones en strapi, una llamada servicios y
@@ -182,11 +167,16 @@ const Landing: FunctionComponent<LandingProps> = (props) => {
                 página.
               </p>
 
-              <h2 style={{ color: lightColor }}>Servicios amarillos</h2>
+              <h2 style={{ color: 'var(--background)' }}>
+                Servicios amarillos
+              </h2>
             </div>
 
             <div>
-              <CTA backgroundColor={backgroundColor} color={darkColor}>
+              <CTA
+                backgroundColor={'var(--background)'}
+                color={'var(--foreground)'}
+              >
                 Borrar último servicio
                 <br />
                 del color actual
@@ -204,6 +194,7 @@ const Landing: FunctionComponent<LandingProps> = (props) => {
                 index={i + 1}
                 service={service}
                 className={`${i % 2 == 1 ? 'lg:translate-y-[123px]' : ''}`}
+                style={i % 2 == 1 ? { backgroundColor: baseColor } : undefined}
               />
             ))}
           </div>

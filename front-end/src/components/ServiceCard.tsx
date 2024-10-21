@@ -17,7 +17,7 @@ const ServiceCard: FunctionComponent<ServiceCardProps> = (props) => {
     <>
       <div
         style={{ ...props.style }}
-        className={`odd:bg-[var(--background-color)] even:bg-[var(--primary-color)] p-[50px] flex flex-col gap-6 rounded-[60px] w-full h-[400px] ${
+        className={`odd:bg-[var(--background)] p-[50px] flex flex-col gap-6 rounded-[60px] w-full h-[400px] ${
           props.className ?? ''
         }`}
       >
