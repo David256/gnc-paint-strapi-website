@@ -794,6 +794,7 @@ export interface ApiColorColor extends Schema.CollectionType {
     singularName: 'color';
     pluralName: 'colors';
     displayName: 'Color';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -801,6 +802,7 @@ export interface ApiColorColor extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
     hex: Attribute.String &
+      Attribute.Required &
       Attribute.SetMinMaxLength<{
         minLength: 6;
         maxLength: 6;

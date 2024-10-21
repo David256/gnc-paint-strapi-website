@@ -4,7 +4,8 @@
   "info": {
     "singularName": "color",
     "pluralName": "colors",
-    "displayName": "Color"
+    "displayName": "Color",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,7 +21,8 @@
       "type": "string",
       "unique": false,
       "minLength": 6,
-      "maxLength": 6
+      "maxLength": 6,
+      "required": true
     },
     "services": {
       "type": "relation",
