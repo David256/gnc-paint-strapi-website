@@ -1,7 +1,11 @@
-import { FunctionComponent } from 'react'
+import { DetailedHTMLProps, FunctionComponent, HtmlHTMLAttributes } from 'react'
 import { Service } from '../types'
 
-interface ServiceCardProps {
+interface ServiceCardProps
+  extends DetailedHTMLProps<
+    HtmlHTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+  > {
   index: number
   service: Service
   className?: string
@@ -12,7 +16,8 @@ const ServiceCard: FunctionComponent<ServiceCardProps> = (props) => {
   return (
     <>
       <div
-        className={`p-[50px] flex flex-col gap-6 rounded-[60px] bg-white w-full h-[400px] ${
+        style={{ ...props.style }}
+        className={`odd:bg-[var(--background-color)] even:bg-[var(--primary-color)] p-[50px] flex flex-col gap-6 rounded-[60px] w-full h-[400px] ${
           props.className ?? ''
         }`}
       >
