@@ -44,7 +44,7 @@ body {
   }
 
   .content-sheet-x {
-    @apply px-64;
+    @apply px-5 md:px-16 lg:px-32 xl:px-64;
   }
 }
 
