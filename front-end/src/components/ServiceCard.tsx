@@ -1,5 +1,6 @@
 import { DetailedHTMLProps, FunctionComponent, HtmlHTMLAttributes } from 'react'
 import { Service } from '../types'
+import Image from 'next/image'
 
 interface ServiceCardProps
   extends DetailedHTMLProps<
@@ -13,6 +14,9 @@ interface ServiceCardProps
 
 const ServiceCard: FunctionComponent<ServiceCardProps> = (props) => {
   const { index, service } = props
+
+  const icon = `/images/icons/${Math.floor(Math.random() * 4) + 1}.png`
+
   return (
     <>
       <div
@@ -21,7 +25,9 @@ const ServiceCard: FunctionComponent<ServiceCardProps> = (props) => {
           props.className ?? ''
         }`}
       >
-        <aside className="flex flex-row w-[60px] h-[60px] border">[icon]</aside>
+        <aside className="flex flex-row w-[60px] h-[60px] border">
+          <Image src={icon} width={60} height={60} alt="" />
+        </aside>
         <div className="flex flex-col gap-[10px]">
           <header className="flex flex-row text-7xl leading-[72px]">
             {index}
