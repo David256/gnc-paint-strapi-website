@@ -1,28 +1,44 @@
-import { Service } from '../types'
+import { Color, Service } from '../types'
 
 import Landing from '@/components/Landing'
+import { getColorWithServices } from './actions'
 
 const services: Service[] = [
   {
+    id: 1,
     title: 'Phasellus Vitae',
-    paragraph: 'Quisque Porttitor vitae vel amet ',
+    description: 'Quisque Porttitor vitae vel amet ',
   },
   {
+    id: 2,
     title: 'Iaculis Magna',
-    paragraph: 'Porttitor neque scelerisque mattis. ',
+    description: 'Porttitor neque scelerisque mattis. ',
   },
   {
+    id: 3,
     title: 'Eleifend Pulvinar ',
-    paragraph: 'Vitae Consectetur nibh velit ',
+    description: 'Vitae Consectetur nibh velit ',
   },
   {
+    id: 4,
     title: 'Velit Odio Phir',
-    paragraph: 'Ametneq magna consectetur leo. ',
+    description: 'Ametneq magna consectetur leo. ',
   },
 ]
 
-export default function Home() {
+export default async function Home() {
   const baseColor = '#F9B800'
 
-  return <Landing baseColor={baseColor} services={services} />
+  let colorData = await getColorWithServices('yellow')
+
+  if (colorData === null) {
+    colorData = {
+      hex: baseColor,
+      id: 0,
+      name: 'yellow',
+      services,
+    } as Color
+  }
+
+  return <Landing baseColor={colorData.hex} services={colorData.services} />
 }

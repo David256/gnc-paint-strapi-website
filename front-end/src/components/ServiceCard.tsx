@@ -33,7 +33,7 @@ const ServiceCard: FunctionComponent<ServiceCardProps> = (props) => {
               {service.title}
             </h4>
             <div className="flex flex-row leading-5 text-xl">
-              {service.paragraph}
+              {service.description}
             </div>
           </div>
         </div>
