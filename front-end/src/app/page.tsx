@@ -194,14 +194,15 @@ export default function Home() {
 
         <div
           data-testid="services"
-          className="grid grid-cols-1 lg:grid-cols-2 lg:max-w-[760px] lg:gap-[30px] gap-[30px] xl::gap-[60px]"
+          className="grid grid-cols-1 lg:grid-cols-2 lg:max-w-[760px] lg:gap-[30px] gap-[30px] xl::gap-[60px] [&>*]:odd:bg-white"
         >
           {services.map((service, i) => (
             <ServiceCard
               key={i}
               index={i + 1}
               service={service}
-              className={i % 2 == 1 ? 'lg:translate-y-[123px]' : ''}
+              className={`${i % 2 == 1 ? 'lg:translate-y-[123px]' : ''}`}
+              style={{ backgroundColor: mainColor }}
             />
           ))}
         </div>
