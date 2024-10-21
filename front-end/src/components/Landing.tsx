@@ -1,4 +1,3 @@
-'use client'
 import { FunctionComponent } from 'react'
 import ServiceCard from './ServiceCard'
 import { Service } from '../types'
