@@ -2,6 +2,7 @@
 
 import { notFound } from 'next/navigation'
 import { Color, ColorCTO } from '../types'
+import logger from '@/lib/logger'
 
 export async function getColorWithServices(
   colorName: string,
@@ -9,16 +10,16 @@ export async function getColorWithServices(
 ): Promise<Color | null> {
   const { STRAPI_API } = process.env
 
-  // console.debug('STRAPI_API:', STRAPI_API)
+  logger.debug('STRAPI_API:', STRAPI_API)
 
   let response: Response
 
   try {
     const url = `${STRAPI_API}/colors?filters[name][$eq]=${colorName}&populate[services][fields][0]=title&populate[services][fields][1]=description&fields[0]=name&fields[1]=hex`
-    // console.debug('url:', url)
+    logger.debug('url:', url)
     response = await fetch(url)
   } catch (err) {
-    console.error(err)
+    logger.error(err)
     if (enableNotFoundError) {
       notFound()
     } else {

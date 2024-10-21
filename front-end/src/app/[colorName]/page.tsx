@@ -1,6 +1,7 @@
 import Landing from '@/components/Landing'
 import { getColorWithServices } from '../actions'
 import { notFound } from 'next/navigation'
+import logger from '@/lib/logger'
 
 interface ColorPageProps {
   params: {
@@ -15,7 +16,7 @@ export default async function ColorPage(props: ColorPageProps) {
     notFound()
   }
 
-  // console.debug(colorData)
+  logger.debug(colorData)
 
   return <Landing baseColor={colorData.hex} services={colorData.services} />
 }
