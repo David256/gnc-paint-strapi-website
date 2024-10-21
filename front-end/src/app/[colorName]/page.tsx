@@ -31,5 +31,11 @@ export default async function ColorPage(props: ColorPageProps) {
 
   logger.debug(colorData)
 
-  return <Landing baseColor={colorData.hex} services={colorData.services} />
+  return (
+    <Landing
+      colorName={props.params.colorName}
+      baseColor={colorData.hex}
+      services={colorData.services}
+    />
+  )
 }

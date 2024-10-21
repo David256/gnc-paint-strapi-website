@@ -1,4 +1,5 @@
-import { FunctionComponent } from 'react'
+'use client'
+import { FunctionComponent, useState } from 'react'
 import ServiceCard from './ServiceCard'
 import { Service } from '../types'
 import Image from 'next/image'
@@ -7,14 +8,26 @@ import Badge from './Badge'
 import CTA from './CTA'
 import Header from './Header'
 import Link from 'next/link'
+import { deleteLastServiceByColor } from '../app/actions'
 
 interface LandingProps {
+  colorName?: string
   services: Service[]
   baseColor: string
 }
 
 const Landing: FunctionComponent<LandingProps> = (props) => {
-  const { services, baseColor } = props
+  const { colorName, baseColor } = props
+
+  const [services, setServices] = useState(() => props.services)
+
+  const handleDeleteLastService = async () => {
+    if (colorName) {
+      if (!(await deleteLastServiceByColor(colorName))) return
+    }
+
+    setServices((previous) => previous.slice(0, -1))
+  }
 
   return (
     <>
@@ -168,6 +181,7 @@ const Landing: FunctionComponent<LandingProps> = (props) => {
               <CTA
                 backgroundColor={'var(--background)'}
                 color={'var(--foreground)'}
+                onClick={handleDeleteLastService}
               >
                 Borrar último servicio
                 <br />
