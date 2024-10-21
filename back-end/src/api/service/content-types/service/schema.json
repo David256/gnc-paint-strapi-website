@@ -20,14 +20,6 @@
       "type": "text",
       "required": true
     },
-    "icon": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
     "color": {
       "type": "relation",
       "relation": "manyToOne",

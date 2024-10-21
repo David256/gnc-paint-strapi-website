@@ -844,7 +844,6 @@ export interface ApiServiceService extends Schema.CollectionType {
   attributes: {
     title: Attribute.String & Attribute.Required;
     description: Attribute.Text & Attribute.Required;
-    icon: Attribute.Media<'images'> & Attribute.Required;
     color: Attribute.Relation<
       'api::service.service',
       'manyToOne',
