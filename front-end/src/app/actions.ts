@@ -6,29 +6,29 @@ import logger from '@/lib/logger'
 
 const { STRAPI_API } = process.env
 
-export async function deleteLastServiceByColor(colorName:string): Promise<boolean> {
-
+export async function deleteLastServiceByColor(
+  colorName: string,
+): Promise<boolean> {
   try {
-    const response= await fetch(`${STRAPI_API}/api/services/delete?colorId=${colorName}`)
+    const url = `${STRAPI_API}/services/delete?colorId=${colorName}`
+    logger.debug('url:', url)
+    const response = await fetch(url, { method: 'DELETE' })
 
     if (!response.ok) return false
 
     const data = await response.json()
+    logger.debug('delete last service:', data)
 
     if (data.error) return false
 
     return true
-  }
-
-  catch(err) {
+  } catch (err) {
     logger.error(err)
     return false
   }
-
 }
 
 export async function getAllColorNames(): Promise<ColorBrief[]> {
-
   try {
     const response = await fetch(`${STRAPI_API}/api/colors?fields[0]=name`)
 
@@ -49,7 +49,6 @@ export async function getColorWithServices(
   colorName: string,
   enableNotFoundError?: boolean,
 ): Promise<Color | null> {
-
   logger.debug('STRAPI_API:', STRAPI_API)
 
   let response: Response
