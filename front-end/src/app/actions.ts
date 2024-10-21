@@ -4,8 +4,30 @@ import { notFound } from 'next/navigation'
 import { Color, ColorBrief, ColorCTO } from '../types'
 import logger from '@/lib/logger'
 
+const { STRAPI_API } = process.env
+
+export async function deleteLastServiceByColor(colorName:string): Promise<boolean> {
+
+  try {
+    const response= await fetch(`${STRAPI_API}/api/services/delete?colorId=${colorName}`)
+
+    if (!response.ok) return false
+
+    const data = await response.json()
+
+    if (data.error) return false
+
+    return true
+  }
+
+  catch(err) {
+    logger.error(err)
+    return false
+  }
+
+}
+
 export async function getAllColorNames(): Promise<ColorBrief[]> {
-  const { STRAPI_API } = process.env
 
   try {
     const response = await fetch(`${STRAPI_API}/api/colors?fields[0]=name`)
@@ -27,7 +49,6 @@ export async function getColorWithServices(
   colorName: string,
   enableNotFoundError?: boolean,
 ): Promise<Color | null> {
-  const { STRAPI_API } = process.env
 
   logger.debug('STRAPI_API:', STRAPI_API)
 
