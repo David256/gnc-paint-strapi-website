@@ -163,7 +163,7 @@ const Landing: FunctionComponent<LandingProps> = (props) => {
                 /:color, si no existe el param con el color ingresado en la URL
                 me redirige al 404. Pero no debe ser el 404 que tiene NEXT js
                 por defecto sino una pantalla completamente negra, donde solo se
-                vea el logo, en la posiciòn superior izquierda como en esta
+                vea el logo, en la posición superior izquierda como en esta
                 página.
               </p>
 
