@@ -12,7 +12,7 @@ const ServiceCard: FunctionComponent<ServiceCardProps> = (props) => {
   return (
     <>
       <div
-        className={`p-[50px] flex flex-col gap-6 rounded-[60px] bg-white w-[350px] h-[400px] ${
+        className={`p-[50px] flex flex-col gap-6 rounded-[60px] bg-white w-full h-[400px] ${
           props.className ?? ''
         }`}
       >
