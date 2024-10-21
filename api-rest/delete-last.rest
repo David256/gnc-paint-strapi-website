@@ -1,0 +1,1 @@
+DELETE http://localhost:1337/api/services/delete?colorId=yellow
