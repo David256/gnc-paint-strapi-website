@@ -1,6 +1,6 @@
-http://localhost:1337/api/colors?filters[name][$eq]=red&populate[services][fields][0]=title&populate[services][fields][1]=description&fields[0]=name&fields[1]=hex
-
-# ?populate[services][fields][0]=title
-# &populate[services][fields][1]=description
-# &fields[0]=name
-# &fields[1]=hex
+http://localhost:1337/api/colors
+?filters[name][$eq]=yellow
+&populate[services][fields][0]=title
+&populate[services][fields][1]=description
+&fields[0]=name
+&fields[1]=hex
