@@ -21,10 +21,16 @@
     z-index: -10;
     content: '';
     position: absolute;
-    top: 50px;
+    top: 150px;
     left: 0;
     right: 0;
     height: calc(100% * 1.2);
     clip-path: polygon(0 20%, 100% 0, 100% 80%, 0 100%);
     background-color: inherit;
+}
+
+@media (min-width: 768px) {
+    .Section::after {
+        top: 50px;
+    }
 }
