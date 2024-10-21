@@ -27,6 +27,12 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "color": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::color.color",
+      "inversedBy": "services"
     }
   }
 }
