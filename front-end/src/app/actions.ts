@@ -1,8 +1,27 @@
 'use server'
 
 import { notFound } from 'next/navigation'
-import { Color, ColorCTO } from '../types'
+import { Color, ColorBrief, ColorCTO } from '../types'
 import logger from '@/lib/logger'
+
+export async function getAllColorNames(): Promise<ColorBrief[]> {
+  const { STRAPI_API } = process.env
+
+  try {
+    const response = await fetch(`${STRAPI_API}/api/colors?fields[0]=name`)
+
+    if (!response.ok) return []
+
+    const { data }: { data: ColorCTO[] } = await response.json()
+
+    return data.map((colorData) => ({
+      name: colorData.attributes.name,
+    }))
+  } catch (err) {
+    logger.error(err)
+    return []
+  }
+}
 
 export async function getColorWithServices(
   colorName: string,

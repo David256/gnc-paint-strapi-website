@@ -29,3 +29,7 @@ export interface Color {
   hex: string
   services: Service[]
 }
+
+export interface ColorBrief {
+  name: string
+}
