@@ -1,0 +1,7 @@
+// Find all the colors with their services
+
+http://localhost:1337/api/colors
+?populate[services][fields][0]=title
+&populate[services][fields][1]=description
+&fields[0]=name
+&fields[1]=hex
