@@ -1,3 +1,4 @@
+'use client'
 import { FunctionComponent } from 'react'
 import ServiceCard from './ServiceCard'
 import { Service } from '../types'
@@ -20,10 +21,17 @@ const Landing: FunctionComponent<LandingProps> = (props) => {
   const mainColor = color.hex()
   const backgroundColor = color.lighten(1).hex()
   const darkColor = color.grayscale().darken(0.79).hex()
-  const lightColor = color.lightness(90).saturate(0.5).hex()
+  const lightColor = color.lightness(90).rotate(-7).saturate(0.6).hex()
 
   return (
     <>
+      <style jsx global>{`
+        :root {
+          --primary-color: ${mainColor};
+          --background-color: ${backgroundColor};
+        }
+      `}</style>
+
       <div
         className="flex flex-col"
         style={{
@@ -137,7 +145,7 @@ const Landing: FunctionComponent<LandingProps> = (props) => {
         </Section>
 
         <Section
-          className="flex flex-col lg:flex-row gap-4 justify-between md:pt-60 pb-40 pt-[30rem]"
+          className="flex flex-col lg:flex-row gap-4 justify-between md:pt-60 pb-48 pt-[30rem]"
           backgroundColor={darkColor}
           style={{ zIndex: 8 }}
         >
@@ -188,7 +196,7 @@ const Landing: FunctionComponent<LandingProps> = (props) => {
 
           <div
             data-testid="services"
-            className="grid grid-cols-1 lg:grid-cols-2 lg:max-w-[760px] lg:gap-[30px] gap-[30px] xl::gap-[60px] [&>*]:odd:bg-white"
+            className="grid grid-cols-1 lg:grid-cols-2 lg:max-w-[760px] lg:gap-[30px] gap-[30px] xl::gap-[60px] [&>*]:odd:bg-white!"
           >
             {services.map((service, i) => (
               <ServiceCard
@@ -196,7 +204,6 @@ const Landing: FunctionComponent<LandingProps> = (props) => {
                 index={i + 1}
                 service={service}
                 className={`${i % 2 == 1 ? 'lg:translate-y-[123px]' : ''}`}
-                style={{ backgroundColor: mainColor }}
               />
             ))}
           </div>
